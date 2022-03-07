@@ -1,0 +1,39 @@
+<h1>Edit Article</h1>
+
+<form method="POST" action="/article/update?_method=PUT">
+
+    <div>
+        <label>Title</label>
+        <input name="title" type="text" value="<%= article.title%>">
+    </div>
+    <br>
+    <div>
+        <label>Description</label>
+        <textarea name="description"><%= article.description%></textarea>
+    </div>
+    <br>
+    <div>
+        <label>Content</label>
+        <textarea name="content"><%= article.content%></textarea>
+    </div>
+    <br>
+    <div>
+        <label>Is Published</label>
+        <input name="isPublished" type="checkbox" value="true"> <!-- note: checkbox will return VALUE when checked, and nothing when unchecked -->
+    </div>
+    <br>
+    <div>
+        <label>Total Words</label>
+        <input name="totalWords" type="number" value="<%= article.totalWords%>">
+    </div>
+    <br>
+    <div>
+        <label>Author</label>
+        <input name="author" type="text" value="<%= article.author%>">
+    </div>
+
+    <input name="id" type="hidden" value="<%= article._id%>">
+
+    <br><br>
+    <button type="submit">Edit Article</button>
+</form>
