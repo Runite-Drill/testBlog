@@ -1,0 +1,27 @@
+<h1>Authors</h1>
+
+<table class="table table-striped">
+    <tr>
+        <th>Name</th>
+        <th>Email Address</th>
+        <th>Phone Number</th>
+
+        <th>Created At</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th></th>
+    </tr>
+
+    <% authors.forEach(author => { %>
+        <tr>
+            <td><%= author.name %></td>
+            <td><%= author.emailAddress %></td>
+            <td><%= author.phoneNumber %></td>
+            <td><%= moment(author.createdAt).fromNow() %></td>
+            <td><a href ="/author/edit?id=<%= author.id %>">Edit</a></td>
+            <td><a href ="/author/delete?id=<%= author.id %>">Delete</a></td>
+            <td><a href ="/author/detail?id=<%= author.id %>">Articles by this author</a></td>
+        </tr>
+
+    <%})%>
+</table>

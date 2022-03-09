@@ -1,6 +1,9 @@
 <h1><%= article.title %></h1>
-<h4>Published on <%= moment(article.createdAt).format("dddd, MMMM Do YYYY [at] h:mm:ss a") %> by <%= article.author %></h4> 
+<h4>Published on <%= moment(article.createdAt).format("dddd, MMMM Do YYYY [at] h:mm:ss a") %></h4>
+<% article.author.forEach(author=>{%>
+    <p><b>Author: </b><%= author.name %>. <b>E</b>: <a href="#"><%= author.emailAddress %></a> | <b>T</b>: <%= author.phoneNumber %> | <a href="/author/detail?id=<%=author.id%>">More articles by this author</a>.</p> 
+<% }) %>
 <h5>Last updated <%= moment(article.updatedAt).fromNow() %>.</h5>
 <hr>
 <p><%= article.content %></p>
-<a href="/article/index">Go Back</a>
+<a href="/articles/index">Go Back</a>

@@ -1,10 +1,10 @@
  <h1>Articles</h1>
- <a href="/article/index?showDrafts=true">Show Drafts</a> |  
- <a href="/article/index?showDrafts=false">Hide Drafts</a> 
+ <a href="/articles/index?showDrafts=true">Show Drafts</a> |  
+ <a href="/articles/index?showDrafts=false">Hide Drafts</a> 
 <% articles.forEach((article, index) => {%>
     <hr>
-    <h2><%= article.title %><% if(!article.isPublished){%> (DRAFT)<%}%></h2>
-    <h5>Length: <%= article.totalWords %> words. Last updated <%= moment(article.updatedAt).fromNow() %>.<br>
+    <h3><%= article.title %><% if(!article.isPublished){%> (DRAFT)<%}%></h3>
+    <h6>Length: <%= article.totalWords %> words. Last updated <%= moment(article.updatedAt).fromNow() %>.<br>
         <a href="/article/edit?id=<%= article.id %>">Edit</a> |  
         <a href="/article/delete?id=<%= article.id %>">Delete</a> 
         <!-- Uncomment text above if using router.GET-->
@@ -17,7 +17,7 @@
                 <button type="submit">Delete</button>
             </form>
         </div> -->
-    </h5>
+    </h6>
 
     <p><%= article.description %></p>
     <a href="/article/detail?id=<%= article.id %>">Read Article</a>

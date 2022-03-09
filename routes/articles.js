@@ -14,7 +14,7 @@ const articleCtrl = require("../controllers/article");
 //Routes
 router.get("/article/add", articleCtrl.article_create_get);
 router.post("/article/add", articleCtrl.article_create_post); //must equal the relevant action from the form in the relevant ejs file -- POST is CREATION of the record
-router.get("/article/index", articleCtrl.article_index_get);
+router.get("/articles/index", articleCtrl.article_index_get);
 router.get("/article/detail", articleCtrl.article_show_get);
 // router.delete("/article/delete", articleCtrl.article_delete_get); //delete used to show how methodOverride works. Can use GET without the methodOverride
 router.get("/article/delete", articleCtrl.article_delete_get); //using GET to delete, without using methodOverride
