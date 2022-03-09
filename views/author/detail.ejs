@@ -12,17 +12,22 @@
         <p> Phone: <%= author.phoneNumber %> </p>
     </div>
     <br>
-    <% author.article.forEach(article=>{%>
-        <div>
-            <hr>
-            <h2><%= article.title %><% if(!article.isPublished){%> (DRAFT)<%}%></h2>
-            <h5>Length: <%= article.totalWords %> words. Last updated <%= moment(article.updatedAt).fromNow() %>.<br>
-                <a href="/article/edit?id=<%= article.id %>">Edit</a> |  
-                <a href="/article/delete?id=<%= article.id %>">Delete</a> 
-            </h5>
-
-            <p><%= article.description %></p>
-            <a href="/article/detail?id=<%= article.id %>">Read Article</a>
-        </div>
+    <% author.article.forEach(article=>{
+        if (currentUser || article.isPublished) {%>
+            <div>
+                <hr>
+                <h2><%= article.title %><% if(!article.isPublished){%> (DRAFT)<%}%></h2>
+                <h5>Length: <%= article.totalWords %> words. Last updated <%= moment(article.updatedAt).fromNow() %>.<br>
+                    <%if (currentUser) {%>
+                        <a href="/article/edit?id=<%= article.id %>">Edit</a> |  
+                        <a href="/article/delete?id=<%= article.id %>">Delete</a> 
+                    <%}%>
+                </h5>
+    
+                <p><%= article.description %></p>
+                <a href="/article/detail?id=<%= article.id %>">Read Article</a>
+            </div>
+        <%}%>
+        
     <%})%>
 </div>

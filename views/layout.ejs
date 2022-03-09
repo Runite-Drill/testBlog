@@ -13,20 +13,32 @@
 <body>
     <b>THE WORLD'S BEST BLOG</b><br>
     Indisputably.
-    <br><br><hr>
+    <br><br>
+    <hr>
+
+
+
     <div id="navBar">
         <nav class="leftNav">
 
-            <a href="/articles/index">Articles</a> |
-            <a href="/article/add">Create Article</a> |
+            <a href="/articles/index">Articles</a>
+            <%if (currentUser) {%>
+                | <a href="/articles/add">Add Article</a>
+            <%}%>|
 
-            <a href="/author/index">Authors</a> |
-            <a href="/author/add">Add Author</a> 
+            <a href="/author/index">Authors</a> 
+            <%if (currentUser) {%>
+                | <a href="/author/add">Add Author</a>
+            <%}%>
         </nav>
         <nav class="rightNav">
-            <a href="/auth/signup">Create an Account</a> |
-            <a href="/auth/signin">Sign In</a> |
-            <a href="/auth/logout">Logout</a>
+            <%if (currentUser) {%>
+                <p></p>Logged in as <%=currentUser.firstName%> <%=currentUser.lastName%>| 
+                <a href="/auth/logout">Logout</a></p>
+            <%} else {%>
+                <a href="/auth/signup">Create an Account</a> |
+                <a href="/auth/signin">Sign In</a>
+            <%}%>
         </nav>
     </div>  
     <hr>

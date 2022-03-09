@@ -1,12 +1,16 @@
  <h1>Articles</h1>
- <a href="/articles/index?showDrafts=true">Show Drafts</a> |  
- <a href="/articles/index?showDrafts=false">Hide Drafts</a> 
+ <%if (currentUser) {%>
+    <a href="/articles/index?showDrafts=true">Show Drafts</a> |  
+    <a href="/articles/index?showDrafts=false">Hide Drafts</a> 
+<%}%>
 <% articles.forEach((article, index) => {%>
     <hr>
     <h3><%= article.title %><% if(!article.isPublished){%> (DRAFT)<%}%></h3>
     <h6>Length: <%= article.totalWords %> words. Last updated <%= moment(article.updatedAt).fromNow() %>.<br>
-        <a href="/article/edit?id=<%= article.id %>">Edit</a> |  
-        <a href="/article/delete?id=<%= article.id %>">Delete</a> 
+        <%if (currentUser) {%>
+            <a href="/article/edit?id=<%= article.id %>">Edit</a> |  
+            <a href="/article/delete?id=<%= article.id %>">Delete</a> 
+        <%}%>
         <!-- Uncomment text above if using router.GET-->
         <!-- Uncomment text below if using router.DELETE (methodOverride)-->
         <!-- <div>

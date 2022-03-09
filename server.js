@@ -1,6 +1,7 @@
 //Initialise Express App
 const express = require("express");
 const mongoose = require("mongoose");
+// const flash = require("flash");
 //configure ENV into process.env
 require("dotenv").config();
 
@@ -15,8 +16,8 @@ const expressLayouts = require("express-ejs-layouts");
 app.use(expressLayouts);
 
 //initialise session/cookies
-let session = require('express-session')
-let passport = require('./helper/ppConfig')
+let session = require('express-session');
+let passport = require('./helper/ppConfig');
 
 app.use(session({
     secret: process.env.secret,
@@ -27,6 +28,15 @@ app.use(session({
 //must go before routes
 app.use(passport.initialize())
 app.use(passport.session())
+
+// app.use(flash());
+
+//Share session information with all pages
+app.use(function(req,res,next) {
+    res.locals.currentUser = req.user;
+    // res.locals.alerts = req.flash();
+    next(); //next is from the express framework
+})
 
 
 //Import Routes
