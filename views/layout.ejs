@@ -16,15 +16,13 @@
     <br><br>
     <hr>
 
-
-
     <div id="navBar">
         <nav class="leftNav">
 
             <a href="/articles/index">Articles</a>
             <%if (currentUser) {%>
                 | <a href="/articles/add">Add Article</a>
-            <%}%>|
+            <%}%> |
 
             <a href="/author/index">Authors</a> 
             <%if (currentUser) {%>
@@ -33,20 +31,44 @@
         </nav>
         <nav class="rightNav">
             <%if (currentUser) {%>
-                <p></p>Logged in as <%=currentUser.firstName%> <%=currentUser.lastName%>| 
+                <p>Logged in as <%=currentUser.firstName%> <%=currentUser.lastName%> |
                 <a href="/auth/logout">Logout</a></p>
             <%} else {%>
                 <a href="/auth/signup">Create an Account</a> |
                 <a href="/auth/signin">Sign In</a>
+            </p>
             <%}%>
         </nav>
     </div>  
     <hr>
+    <% if(alerts.validationErrors) {%>
+        <% alerts.validationErrors.forEach(msg=>{%>
+            <div class="alert alert-danger">
+                <%=msg.msg%>
+            </div>
+        <%})%>
+    <%}%>
+    <% if(alerts.success) {%>
+        <% alerts.success.forEach(msg=>{%>
+            <div class="alert alert-success"><%=msg%></div>
+        <%})%>
+    <%}%>
+    <% if(alerts.error) {%>
+        <% alerts.error.forEach(msg=>{%>
+            <div class="alert alert-danger"><%=msg%></div>
+        <%})%>
+    <%}%>
     <br>
     <%- body %>
     <br><br>
     <hr>
     <br>
     Shared Footer Layout from Layout Page
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
+    <script src="../js/main.js"></script>
 </body>
 </html>

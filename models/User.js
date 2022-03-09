@@ -27,6 +27,14 @@ const userSchema = mongoose.Schema({
         minLength: [6, "Your password must be at least 6 characters"],
         unique: true,
     },
+    //EXAMPLE of adding user roles.
+    // userRole: {
+        //type: String
+        //enum: ["admin", "regular", "superAdmin"]
+        //default: "regular"
+    //}
+    //This can then be used in "views" using currentUser.userRole
+
 },
     {timestamps: true}
 )
